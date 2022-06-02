@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_app/app/modules/home/bindings/home_binding.dart';
 import 'package:mobile_app/app/modules/home/views/home_view.dart';
@@ -26,7 +27,7 @@ class CategoriesController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    allCategories = Get.arguments;
+    allCategories = CategoryService.categoryList;
     foundCategories.value = allCategories;
   }
   @override
@@ -95,6 +96,17 @@ class CategoriesController extends GetxController {
     }
   }
 
+  displayBackArrow() {
+    return
+      codeStack.isNotEmpty
+        ?
+      IconButton(
+        icon: const Icon(Icons.arrow_back, color: Colors.black),
+        onPressed: () => navigateBack(),
+      )
+        :
+      Container();
+  }
   splitCode(String code) {
     const splitSize = 3;
     RegExp exp = RegExp(r"{\d{" + "$splitSize" + "}}");

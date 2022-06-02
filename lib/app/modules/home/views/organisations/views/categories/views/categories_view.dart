@@ -12,11 +12,13 @@ class CategoriesView extends GetView<CategoriesController> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Categories'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => controller.navigateBack(),
-        ),
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        automaticallyImplyLeading: false,//disable back arrow when there is no parent category
+        title: const Text('Choose a category', style: TextStyle(color: Colors.black, fontSize: 18),),
+        leading: Obx(
+            () => controller.displayBackArrow()
+        )
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),
