@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:mobile_app/app/modules/home/bindings/home_binding.dart';
+import 'package:mobile_app/app/modules/home/views/home_view.dart';
 import 'package:mobile_app/app/modules/home/views/organisations/views/organisations_list/bindings/organisations_list_binding.dart';
 import 'package:mobile_app/app/modules/home/views/organisations/views/organisations_list/views/organisations_list_view.dart';
 import 'package:mobile_app/app/services/categoryService.dart';
@@ -62,7 +64,9 @@ class CategoriesController extends GetxController {
     if(category['children'].isEmpty) {
       Get.to(
           () => OrganisationsListView(),
-        binding: OrganisationsListBinding()
+        binding: OrganisationsListBinding(),
+        transition: Transition.rightToLeft
+
       );
       return;
     }
@@ -73,7 +77,10 @@ class CategoriesController extends GetxController {
   navigateBack() {
     if(codeStack.isEmpty) {
       //Popping pages until going back to home page.
-      Get.until((route) => Get.currentRoute == '/home');
+      Get.offAll(
+          () => HomeView(),
+        binding: HomeBinding()
+      );
     }
     else {
       codeStack.removeLast();

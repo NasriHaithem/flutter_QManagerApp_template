@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mobile_app/app/services/serviceService.dart';
 
 class OrganisationDetailsController extends GetxController {
+  final pageController = PageController(initialPage: 0);
   late final List<Map<String, dynamic>> allServices;
   Rx<List<Map<String, dynamic>>> foundServices = Rx<List<Map<String, dynamic>>>([]);
   final searchInput = TextEditingController();

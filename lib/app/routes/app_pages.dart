@@ -14,6 +14,8 @@ import '../modules/home/views/organisations/views/organisation_details/views/org
 import '../modules/home/views/organisations/views/organisations_list/bindings/organisations_list_binding.dart';
 import '../modules/home/views/organisations/views/organisations_list/views/organisations_list_view.dart';
 import '../modules/home/views/organisations/views/organisations_view.dart';
+import '../modules/home/views/organisations/views/sites/bindings/sites_binding.dart';
+import '../modules/home/views/organisations/views/sites/views/sites_view.dart';
 import '../modules/home/views/profile/bindings/profile_binding.dart';
 import '../modules/home/views/profile/views/account_credentials/bindings/account_credentials_binding.dart';
 import '../modules/home/views/profile/views/account_credentials/views/account_credentials_view.dart';
@@ -61,6 +63,11 @@ class AppPages {
               name: _Paths.ORGANISATION_DETAILS,
               page: () => OrganisationDetailsView(),
               binding: OrganisationDetailsBinding(),
+            ),
+            GetPage(
+              name: _Paths.SITES,
+              page: () => SitesView(),
+              binding: SitesBinding(),
             ),
           ],
         ),

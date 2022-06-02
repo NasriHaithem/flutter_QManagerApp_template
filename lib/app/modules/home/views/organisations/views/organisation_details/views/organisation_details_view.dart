@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:mobile_app/app/modules/home/views/organisations/views/sites/bindings/sites_binding.dart';
+import 'package:mobile_app/app/modules/home/views/organisations/views/sites/views/sites_view.dart';
 import 'package:mobile_app/app/services/organisationService.dart';
 import 'package:mobile_app/app/services/serviceService.dart';
 
@@ -92,7 +94,12 @@ class OrganisationDetailsView extends GetView<OrganisationDetailsController> {
                     itemBuilder: (context, index) => Card(
                       child: ListTile(
                         onTap: () {
-                          //controller.updateCategoriesList(controller.foundServices.value[index]);
+                            Get.to(
+                                () => SitesView(),
+                              binding: SitesBinding(),
+                              arguments: controller.foundServices.value[index],
+                              transition: Transition.rightToLeft
+                            );
                         },
                         title: Text(
                           ServiceService.getServiceName(controller.foundServices.value[index]),

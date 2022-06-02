@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:mobile_app/app/modules/home/views/favorites/views/favorites_view.dart';
+import 'package:mobile_app/app/modules/home/views/organisations/views/categories/views/categories_view.dart';
 import 'package:mobile_app/app/modules/home/views/organisations/views/organisations_view.dart';
 import 'package:mobile_app/app/modules/home/views/profile/views/profile_view.dart';
 import 'package:mobile_app/app/modules/home/views/reservations/views/reservations_view.dart';
@@ -26,10 +27,10 @@ class HomeView extends GetView<HomeController> {
             child: IndexedStack(
               index: controller.tabIndex,
               children:  [
-                OrganisationsView(),
-                FavoritesView(),
-                ReservationsView(),
                 ProfileView(),
+                CategoriesView(),
+                ReservationsView(),
+                FavoritesView(),
               ],
             ),
           ),
@@ -42,22 +43,27 @@ class HomeView extends GetView<HomeController> {
             backgroundColor: Colors.white,
             elevation: 20.0,
             items: [
-              BottomNavigationBarItem(
-                icon: const Icon(CupertinoIcons.building_2_fill),
-                label: 'organisationsTag'.tr,
-              ),
-              BottomNavigationBarItem(
-                icon: const Icon(CupertinoIcons.suit_heart_fill),
-                label: 'favoritesTag'.tr,
-              ),
-              BottomNavigationBarItem(
-                icon: const Icon(CupertinoIcons.tickets_fill),
-                label: 'reservationsTag'.tr,
-              ),
+              //Profile
               BottomNavigationBarItem(
                 icon: const Icon(CupertinoIcons.profile_circled),
                 label: 'profileTag'.tr,
               ),
+              //Organisation
+              BottomNavigationBarItem(
+                icon: const Icon(CupertinoIcons.building_2_fill),
+                label: 'organisationsTag'.tr,
+              ),
+              //Reservation
+              BottomNavigationBarItem(
+                icon: const Icon(CupertinoIcons.tickets_fill),
+                label: 'reservationsTag'.tr,
+              ),
+              //Favorites
+              BottomNavigationBarItem(
+                icon: const Icon(CupertinoIcons.suit_heart_fill),
+                label: 'favoritesTag'.tr,
+              ),
+
             ],
           ),
         );

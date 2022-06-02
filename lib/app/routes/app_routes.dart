@@ -17,6 +17,7 @@ abstract class Routes {
   static const CATEGORIES = _Paths.HOME + _Paths.ORGANISATIONS + _Paths.CATEGORIES;
   static const ORGANISATIONS_LIST = _Paths.HOME + _Paths.ORGANISATIONS + _Paths.ORGANISATIONS_LIST;
   static const ORGANISATION_DETAILS = _Paths.HOME + _Paths.ORGANISATIONS + _Paths.ORGANISATION_DETAILS;
+  static const SITES = _Paths.HOME + _Paths.ORGANISATIONS + _Paths.SITES;
 }
 
 abstract class _Paths {
@@ -35,4 +36,5 @@ abstract class _Paths {
   static const CATEGORIES = '/categories';
   static const ORGANISATIONS_LIST = '/organisations-list';
   static const ORGANISATION_DETAILS = '/organisation-details';
+  static const SITES = '/sites';
 }
