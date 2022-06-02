@@ -8,10 +8,12 @@ class SitesController extends GetxController {
   final searchInput = TextEditingController();
 
   late final dynamic service;
+  late final dynamic organisation;
 
   @override
   void onInit() {
-    service = Get.arguments;
+    service = Get.arguments['service'];
+    organisation = Get.arguments['organisation'];
     allSites = SiteService.sitesList;
     foundSites.value = allSites;
     super.onInit();

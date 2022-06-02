@@ -66,12 +66,12 @@ class ServiceService {
     },
   ];
 
-  static String getServiceName(services) {
+  static String getServiceName(service) {
     Locale locale = Get.locale ?? const Locale("en");
     switch(locale.toString()) {
-      case "ar": return services["nomServiceAR"];
-      case "fr": return services["nomServiceFR"];
-      default: return services["nomServiceEN"];
+      case "ar": return service["nomServiceAR"];
+      case "fr": return service["nomServiceFR"];
+      default: return service["nomServiceEN"];
     }
   }
 }

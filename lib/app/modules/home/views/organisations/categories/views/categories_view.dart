@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:mobile_app/app/modules/home/views/organisations/views/categories/bindings/categories_binding.dart';
 
 import '../controllers/categories_controller.dart';
 

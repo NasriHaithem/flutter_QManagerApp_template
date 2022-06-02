@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:mobile_app/app/modules/home/views/organisations/views/sites/bindings/sites_binding.dart';
-import 'package:mobile_app/app/modules/home/views/organisations/views/sites/views/sites_view.dart';
+import 'package:mobile_app/app/modules/home/views/organisations/share_location/bindings/share_location_binding.dart';
+import 'package:mobile_app/app/modules/home/views/organisations/share_location/views/share_location_view.dart';
+import 'package:mobile_app/app/modules/home/views/organisations/sites/bindings/sites_binding.dart';
+import 'package:mobile_app/app/modules/home/views/organisations/sites/views/sites_view.dart';
 import 'package:mobile_app/app/services/organisationService.dart';
 import 'package:mobile_app/app/services/serviceService.dart';
 
@@ -44,6 +46,7 @@ class OrganisationDetailsView extends GetView<OrganisationDetailsController> {
             )
         ),
         extendBodyBehindAppBar: true,
+
         body: Container(
           color: Colors.grey[200],
           child: Column(
@@ -88,26 +91,29 @@ class OrganisationDetailsView extends GetView<OrganisationDetailsController> {
               //The services list
               Expanded(
                 child: Obx(
-                  () => ListView.builder(
+                  () => MediaQuery(
+                    data: MediaQuery.of(context).removePadding(
+                      removeLeft: false,
+                      removeTop: false,
+                      removeRight: false,
+                      removeBottom: false,
+                    ),
+                    child: ListView.builder(
 
-                    itemCount: controller.foundServices.value.length,
-                    itemBuilder: (context, index) => Card(
-                      child: ListTile(
-                        onTap: () {
-                            Get.to(
-                                () => SitesView(),
-                              binding: SitesBinding(),
-                              arguments: controller.foundServices.value[index],
-                              transition: Transition.rightToLeft
-                            );
-                        },
-                        title: Text(
-                          ServiceService.getServiceName(controller.foundServices.value[index]),
-                          style:
-                          const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      itemCount: controller.foundServices.value.length,
+                      itemBuilder: (context, index) => Card(
+                        child: ListTile(
+                          onTap: () {
+                            controller.navigateToNextPage(controller.foundServices.value[index]);
+                          },
+                          title: Text(
+                            ServiceService.getServiceName(controller.foundServices.value[index]),
+                            style:
+                            const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          trailing: const Icon(Icons.chevron_right),
+
                         ),
-                        trailing: const Icon(Icons.chevron_right),
-
                       ),
                     ),
                   ),

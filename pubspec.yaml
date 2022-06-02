@@ -10,7 +10,8 @@ dependencies:
   get: 4.6.3
   flutter:
     sdk: flutter
-
+  geolocator: ^8.2.1
+  fluttertoast:
 
 dev_dependencies: 
   flutter_lints: ^2.0.0

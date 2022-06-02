@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:mobile_app/app/modules/home/views/organisations/views/organisation_details/bindings/organisation_details_binding.dart';
-import 'package:mobile_app/app/modules/home/views/organisations/views/organisation_details/views/organisation_details_view.dart';
-import 'package:mobile_app/app/services/organisationService.dart';
+import 'package:mobile_app/app/modules/home/views/organisations/organisation_details/bindings/organisation_details_binding.dart';
+import 'package:mobile_app/app/modules/home/views/organisations/organisation_details/views/organisation_details_view.dart';
 import 'package:mobile_app/app/widgets/CustomCard.dart';
 
 import '../controllers/organisations_list_controller.dart';

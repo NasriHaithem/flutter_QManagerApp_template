@@ -12,12 +12,19 @@ abstract class Routes {
   static const FAVORITES = _Paths.HOME + _Paths.FAVORITES;
   static const RESERVATIONS = _Paths.HOME + _Paths.RESERVATIONS;
   static const PROFILE = _Paths.HOME + _Paths.PROFILE;
-  static const UPDATE_PASSWORD = _Paths.HOME + _Paths.PROFILE + _Paths.UPDATE_PASSWORD;
-  static const ACCOUNT_CREDENTIALS = _Paths.HOME + _Paths.PROFILE + _Paths.ACCOUNT_CREDENTIALS;
-  static const CATEGORIES = _Paths.HOME + _Paths.ORGANISATIONS + _Paths.CATEGORIES;
-  static const ORGANISATIONS_LIST = _Paths.HOME + _Paths.ORGANISATIONS + _Paths.ORGANISATIONS_LIST;
-  static const ORGANISATION_DETAILS = _Paths.HOME + _Paths.ORGANISATIONS + _Paths.ORGANISATION_DETAILS;
+  static const UPDATE_PASSWORD =
+      _Paths.HOME + _Paths.PROFILE + _Paths.UPDATE_PASSWORD;
+  static const ACCOUNT_CREDENTIALS =
+      _Paths.HOME + _Paths.PROFILE + _Paths.ACCOUNT_CREDENTIALS;
+  static const CATEGORIES =
+      _Paths.HOME + _Paths.ORGANISATIONS + _Paths.CATEGORIES;
+  static const ORGANISATIONS_LIST =
+      _Paths.HOME + _Paths.ORGANISATIONS + _Paths.ORGANISATIONS_LIST;
+  static const ORGANISATION_DETAILS =
+      _Paths.HOME + _Paths.ORGANISATIONS + _Paths.ORGANISATION_DETAILS;
   static const SITES = _Paths.HOME + _Paths.ORGANISATIONS + _Paths.SITES;
+  static const SHARE_LOCATION =
+      _Paths.HOME  + _Paths.ORGANISATIONS + _Paths.SHARE_LOCATION;
 }
 
 abstract class _Paths {
@@ -37,4 +44,5 @@ abstract class _Paths {
   static const ORGANISATIONS_LIST = '/organisations-list';
   static const ORGANISATION_DETAILS = '/organisation-details';
   static const SITES = '/sites';
+  static const SHARE_LOCATION = '/share-location';
 }

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_app/app/modules/home/bindings/home_binding.dart';
 import 'package:mobile_app/app/modules/home/views/home_view.dart';
-import 'package:mobile_app/app/modules/home/views/organisations/views/organisations_list/bindings/organisations_list_binding.dart';
-import 'package:mobile_app/app/modules/home/views/organisations/views/organisations_list/views/organisations_list_view.dart';
+import 'package:mobile_app/app/modules/home/views/organisations/organisations_list/bindings/organisations_list_binding.dart';
+import 'package:mobile_app/app/modules/home/views/organisations/organisations_list/views/organisations_list_view.dart';
 import 'package:mobile_app/app/services/categoryService.dart';
 
 class CategoriesController extends GetxController {

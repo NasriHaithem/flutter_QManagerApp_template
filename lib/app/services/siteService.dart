@@ -50,12 +50,12 @@ class SiteService {
     }
   ];
 
-  static String getSiteName(services) {
+  static String getSiteName(site) {
     Locale locale = Get.locale ?? const Locale("en");
     switch(locale.toString()) {
-      case "ar": return services["nomSiteAR"];
-      case "fr": return services["nomSiteFR"];
-      default: return services["nomSiteEN"];
+      case "ar": return site["nomSiteAR"];
+      case "fr": return site["nomSiteFR"];
+      default: return site["nomSiteEN"];
     }
   }
 

@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 import 'package:mobile_app/app/modules/home/views/favorites/controllers/favorites_controller.dart';
-import 'package:mobile_app/app/modules/home/views/organisations/controllers/organisations_controller.dart';
-import 'package:mobile_app/app/modules/home/views/organisations/views/categories/controllers/categories_controller.dart';
-import 'package:mobile_app/app/modules/home/views/organisations/views/categories/views/categories_view.dart';
+import 'package:mobile_app/app/modules/home/views/organisations/categories/controllers/categories_controller.dart';
 import 'package:mobile_app/app/modules/home/views/profile/controllers/profile_controller.dart';
 import 'package:mobile_app/app/modules/home/views/reservations/controllers/reservations_controller.dart';
 

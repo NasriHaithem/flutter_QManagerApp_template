@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:mobile_app/app/modules/home/views/favorites/views/favorites_view.dart';
-import 'package:mobile_app/app/modules/home/views/organisations/views/categories/views/categories_view.dart';
-import 'package:mobile_app/app/modules/home/views/organisations/views/organisations_view.dart';
+import 'package:mobile_app/app/modules/home/views/organisations/categories/views/categories_view.dart';
 import 'package:mobile_app/app/modules/home/views/profile/views/profile_view.dart';
 import 'package:mobile_app/app/modules/home/views/reservations/views/reservations_view.dart';
-import 'package:mobile_app/app/widgets/dialogs/choose_language_dialog.dart';
 
 import '../controllers/home_controller.dart';
 

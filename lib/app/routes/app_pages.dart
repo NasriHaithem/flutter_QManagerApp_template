@@ -6,16 +6,10 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/favorites/bindings/favorites_binding.dart';
 import '../modules/home/views/favorites/views/favorites_view.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/home/views/organisations/bindings/organisations_binding.dart';
-import '../modules/home/views/organisations/views/categories/bindings/categories_binding.dart';
-import '../modules/home/views/organisations/views/categories/views/categories_view.dart';
-import '../modules/home/views/organisations/views/organisation_details/bindings/organisation_details_binding.dart';
-import '../modules/home/views/organisations/views/organisation_details/views/organisation_details_view.dart';
-import '../modules/home/views/organisations/views/organisations_list/bindings/organisations_list_binding.dart';
-import '../modules/home/views/organisations/views/organisations_list/views/organisations_list_view.dart';
-import '../modules/home/views/organisations/views/organisations_view.dart';
-import '../modules/home/views/organisations/views/sites/bindings/sites_binding.dart';
-import '../modules/home/views/organisations/views/sites/views/sites_view.dart';
+import '../modules/home/views/organisations/categories/bindings/categories_binding.dart';
+import '../modules/home/views/organisations/categories/views/categories_view.dart';
+import '../modules/home/views/organisations/share_location/bindings/share_location_binding.dart';
+import '../modules/home/views/organisations/share_location/views/share_location_view.dart';
 import '../modules/home/views/profile/bindings/profile_binding.dart';
 import '../modules/home/views/profile/views/account_credentials/bindings/account_credentials_binding.dart';
 import '../modules/home/views/profile/views/account_credentials/views/account_credentials_view.dart';
@@ -45,31 +39,9 @@ class AppPages {
       binding: HomeBinding(),
       children: [
         GetPage(
-          name: _Paths.ORGANISATIONS,
-          page: () => OrganisationsView(),
-          binding: OrganisationsBinding(),
-          children: [
-            GetPage(
-              name: _Paths.CATEGORIES,
-              page: () => CategoriesView(),
-              binding: CategoriesBinding(),
-            ),
-            GetPage(
-              name: _Paths.ORGANISATIONS_LIST,
-              page: () => OrganisationsListView(),
-              binding: OrganisationsListBinding(),
-            ),
-            GetPage(
-              name: _Paths.ORGANISATION_DETAILS,
-              page: () => OrganisationDetailsView(),
-              binding: OrganisationDetailsBinding(),
-            ),
-            GetPage(
-              name: _Paths.SITES,
-              page: () => SitesView(),
-              binding: SitesBinding(),
-            ),
-          ],
+          name: _Paths.FAVORITES,
+          page: () => CategoriesView(),
+          binding: CategoriesBinding(),
         ),
         GetPage(
           name: _Paths.FAVORITES,
@@ -97,6 +69,11 @@ class AppPages {
               binding: AccountCredentialsBinding(),
             ),
           ],
+        ),
+        GetPage(
+          name: _Paths.SHARE_LOCATION,
+          page: () => ShareLocationView(),
+          binding: ShareLocationBinding(),
         ),
       ],
     ),
