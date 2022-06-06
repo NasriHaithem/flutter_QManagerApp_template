@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -53,17 +55,31 @@ class OrganisationDetailsView extends GetView<OrganisationDetailsController> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               //Organisation Cover
-              ClipRRect(
-                  child: Hero(
-                    tag: controller.organisation['id'].toString(),
-                    child: Image.asset(
-                      'assets/fake_logo.png',
-                      height: 300,
-                      fit: BoxFit.fill,
-                      alignment: Alignment.topCenter,
-                    ),
-                  )
+              SizedBox(
+                height: 250,
+                child: Hero(
+                  tag: controller.organisation['id'].toString(),
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.asset('assets/fake_logo.png', fit: BoxFit.cover),
+                      ClipRRect( // Clip it cleanly.
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                          child:  Image.asset(
+                              'assets/fake_logo.png',
+                              height: 300,
+                              fit: BoxFit.contain,
+                              alignment: Alignment.topCenter,
+                            ),
+
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
+
               const SizedBox(height: 10),
 
               //Organisation Title
@@ -77,14 +93,6 @@ class OrganisationDetailsView extends GetView<OrganisationDetailsController> {
                       )
                   ),
 
-                  trailing: IconButton(
-                      icon: Icon(
-                        Icons.favorite,
-                        color: Colors.grey[400],
-                        size: 30,
-                      ),
-                      onPressed: () {},
-                    ),
                 subtitle: Text("Pick a service to register in."),
               ),
 

@@ -36,6 +36,10 @@ class AppTranslations extends Translations{
       'invalidEmailError':      "Provide valid Email",
       'invalidPhoneError':      "Provide valid Phone Number",
       'invalidPasswordError':   "Password must be of 6 characters",
+      'requiredInputError':     "This field is required",
+      'confirmCodePageTitle':   "Enter confirmation code",
+      'codeInputLabel':         "Code",
+      'confirmBtn':             "Confirm",
 
       //CHOOSE LANGUAGE DIALOG
       'chooseLangDialogTitle':  "Choose Your Language",
@@ -49,6 +53,10 @@ class AppTranslations extends Translations{
       'pageThreeInfo':         'Nam eget egestas neque, in tempor ligula. Vivamus velit dui, ultrices sed nibh a, congue iaculis leo. Mauris placerat arcu ipsum, ut sagittis odio congue quis.',
       'start':                 'Start',
       'next':                  'Next',
+      'registerStepLabel':     "Register",
+      'activateStepLabel':     "Activate",
+      'confirmStepLabel':      "Confirm",
+      'createPasswordStepLabel':"Create password",
 
       //HOME PAGE
       'organisationsTag':      "Organisations",
@@ -97,6 +105,14 @@ class AppTranslations extends Translations{
       'invalidEmailError':       "أدخل بريد إلكتروني بشكل صحيح",
       'invalidPhoneError':       "أدخل رقم هاتف بشكل صحيح",
       'invalidPasswordError':    "كلمة المرور يجب أن تتكون من 6 أحرف على الأقل" ,
+      'requiredInputError':      "توفير هذه البيانات مطلوب",
+      'confirmCodePageTitle':    "أدخل رمز التأكيد",
+      'codeInputLabel':          "الرمز",
+      'confirmBtn':              "التأكيد",
+      'registerStepLabel':       "تسجيل" ,
+      'activateStepLabel':       "التفعيل",
+      'confirmStepLabel':        "التأكيد" ,
+      'createPasswordStepLabel':"أنشئ كلمة مرور",
 
       //CHOOSE LANGUAGE DIALOG
       'chooseLangDialogTitle':  "اختر لغة",
@@ -155,6 +171,15 @@ class AppTranslations extends Translations{
       'invalidEmailError':      "Fournir une adresse e-mail valide",
       'invalidPhoneError':      "Fournir un numéro de téléphone valide",
       'invalidPasswordError':   "Le mot de passe doit comporter au moins 6 caractères",
+      'requiredInputError':     "Ce champ est obligatoire",
+      'confirmCodePageTitle':   "Entrez le code de confirmation",
+      'codeInputLabel':         "Code",
+      'confirmBtn':             "Confirmer",
+      'registerStepLabel':      "Inscrire",
+      'activateStepLabel':      "Activer",
+      'confirmStepLabel':       "Confirmer",
+      'createPasswordStepLabel':"Créer un mot de passe",
+
 
       //CHOOSE LANGUAGE DIALOG
       'chooseLangDialogTitle':  "Choisissez une langue",

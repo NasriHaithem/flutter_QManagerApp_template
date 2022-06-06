@@ -2,6 +2,12 @@ import 'package:get/get.dart';
 
 class CredentialsValidator {
 
+  static String? validateRequiredInput(String value) {
+    if (value == "") {
+      return "requiredInputError".tr;
+    }
+    return null;
+  }
   static String? validateEmail(String value) {
     if (!GetUtils.isEmail(value)) {
       return "invalidEmailError".tr;
@@ -33,3 +39,4 @@ class CredentialsValidator {
     return null;
   }
 }
+

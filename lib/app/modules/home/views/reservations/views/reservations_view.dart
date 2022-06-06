@@ -11,7 +11,6 @@ class ReservationsView extends GetView<ReservationsController> {
     return Scaffold(
       body:  ListView(
         children: [
-
           Container(
             padding: const EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 8),
             decoration:  BoxDecoration(
@@ -43,7 +42,7 @@ class ReservationsView extends GetView<ReservationsController> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
                           Text("Service: ",style: TextStyle(fontSize: 18,color: Colors.black,fontWeight: FontWeight.bold),),
-                          Text("The service 1",style: TextStyle(fontSize: 18,color: Colors.pink,fontWeight: FontWeight.bold),),
+                          Text("The service 1",style: TextStyle(fontSize: 18,color: Colors.indigo,fontWeight: FontWeight.bold),),
                         ],
                       ),
                       const SizedBox(height: 12),
@@ -57,7 +56,7 @@ class ReservationsView extends GetView<ReservationsController> {
                           Text("Site 1 ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.indigo),),
                         ],
                       ),
-                      const SizedBox(height: 4,),
+                      const SizedBox(height: 2,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: const <Widget>[
@@ -94,6 +93,23 @@ class ReservationsView extends GetView<ReservationsController> {
                                 width: 5,
                               ),
                               Icon( Icons.group, size: 24.0, ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children:  <Widget>[
+                          const Text("Etat : ",style: TextStyle(fontSize: 18,color: Colors.black,fontWeight: FontWeight.bold),),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              Text('Waiting', style: TextStyle(fontSize: 18,color: Colors.amber,fontWeight: FontWeight.bold),), // <-- Text
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Icon( Icons.access_time, size: 24.0, color: Colors.amber,),
                             ],
                           ),
                         ],
@@ -217,7 +233,7 @@ class ReservationsView extends GetView<ReservationsController> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
                           Text("Service: ",style: TextStyle(fontSize: 18,color: Colors.black,fontWeight: FontWeight.bold),),
-                          Text("The service 1",style: TextStyle(fontSize: 18,color: Colors.pink,fontWeight: FontWeight.bold),),
+                          Text("The service 1",style: TextStyle(fontSize: 18,color: Colors.indigo,fontWeight: FontWeight.bold),),
                         ],
                       ),
                       const SizedBox(height: 12),
@@ -231,7 +247,7 @@ class ReservationsView extends GetView<ReservationsController> {
                           Text("Site 1 ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.indigo),),
                         ],
                       ),
-                      const SizedBox(height: 4,),
+                      const SizedBox(height: 2,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: const <Widget>[
@@ -268,6 +284,23 @@ class ReservationsView extends GetView<ReservationsController> {
                                 width: 5,
                               ),
                               Icon( Icons.group, size: 24.0, ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children:  <Widget>[
+                          const Text("Etat : ",style: TextStyle(fontSize: 18,color: Colors.black,fontWeight: FontWeight.bold),),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              Text('Served', style: TextStyle(fontSize: 18,color: Colors.green,fontWeight: FontWeight.bold),), // <-- Text
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Icon( Icons.check, size: 24.0, color: Colors.green,),
                             ],
                           ),
                         ],
@@ -391,7 +424,7 @@ class ReservationsView extends GetView<ReservationsController> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const <Widget>[
                           Text("Service: ",style: TextStyle(fontSize: 18,color: Colors.black,fontWeight: FontWeight.bold),),
-                          Text("The service 1",style: TextStyle(fontSize: 18,color: Colors.pink,fontWeight: FontWeight.bold),),
+                          Text("The service 1",style: TextStyle(fontSize: 18,color: Colors.indigo,fontWeight: FontWeight.bold),),
                         ],
                       ),
                       const SizedBox(height: 12),
@@ -405,7 +438,7 @@ class ReservationsView extends GetView<ReservationsController> {
                           Text("Site 1 ",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold,color: Colors.indigo),),
                         ],
                       ),
-                      const SizedBox(height: 4,),
+                      const SizedBox(height: 2,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: const <Widget>[
@@ -442,6 +475,23 @@ class ReservationsView extends GetView<ReservationsController> {
                                 width: 5,
                               ),
                               Icon( Icons.group, size: 24.0, ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children:  <Widget>[
+                          const Text("Etat : ",style: TextStyle(fontSize: 18,color: Colors.black,fontWeight: FontWeight.bold),),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              Text('Cancelled', style: TextStyle(fontSize: 18,color: Colors.red,fontWeight: FontWeight.bold),), // <-- Text
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Icon( Icons.cancel_outlined, size: 24.0, color: Colors.red,),
                             ],
                           ),
                         ],

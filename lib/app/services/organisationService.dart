@@ -7,7 +7,7 @@ class OrganisationService {
       "id": 1,
       "nomOrganisationFR": "nom 1",
       "nomOrganisationAR": "اسم 1",
-      "nomOrganisationEN": "name 1",
+      "nomOrganisationEN": "name 1 name 1 name 1 name 1",
     },
     {
       "id": 2,

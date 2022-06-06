@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:mobile_app/app/modules/home/views/organisations/organisation_details/bindings/organisation_details_binding.dart';
 import 'package:mobile_app/app/modules/home/views/organisations/organisation_details/views/organisation_details_view.dart';
 import 'package:mobile_app/app/widgets/CustomCard.dart';
+import 'package:mobile_app/app/widgets/dialogs/choose_language_dialog.dart';
 
 import '../controllers/organisations_list_controller.dart';
 
@@ -11,7 +12,6 @@ class OrganisationsListView extends GetView<OrganisationsListController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[200],
         appBar: AppBar(
           title: Text('Organisations List'),
           centerTitle: true,
@@ -25,24 +25,56 @@ class OrganisationsListView extends GetView<OrganisationsListController> {
               ),
 
               //Search Field
-              Container(
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius:  BorderRadius.only(
-                      topLeft: Radius.circular(7.0),
-                      topRight: Radius.circular(7.0),
-                      )
-                ),
-                child: TextField(
-                  style: const TextStyle(color: Colors.deepPurpleAccent),
-                  onChanged: (value) => controller.filterOrganisations(value),
-                  decoration: const InputDecoration(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: 270,
+                    height: 50,
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+                    decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius:  BorderRadius.only(
+                          topLeft: Radius.circular(7.0),
+                          topRight: Radius.circular(7.0),
+                          )
+                    ),
 
-                    labelText: 'Search',
-                    suffixIcon: Icon(Icons.search),
+                    child: TextField(
+                      style: const TextStyle(color: Colors.deepPurpleAccent),
+                      onChanged: (value) => controller.filterOrganisations(value),
+                      decoration: const InputDecoration(
+
+                        labelText: 'Search',
+                        suffixIcon: Icon(Icons.search),
+                      ),
+                    ),
                   ),
-                ),
+                  Container(
+                    height: 50,
+
+                    padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
+                    decoration: const BoxDecoration(
+                        color: Colors.deepPurple,
+                        borderRadius:  BorderRadius.only(
+                          topLeft: Radius.circular(7.0),
+                          topRight: Radius.circular(7.0),
+                          bottomRight: Radius.circular(7.0),
+                          bottomLeft: Radius.circular(7.0),
+                        )
+                    ),
+
+                    child: Row(
+                      children: [
+                        Text("Filter", style: TextStyle(color: Colors.white, fontSize: 16),),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.filter_list, color: Colors.white, size: 30,),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
               const SizedBox(
                 height: 10,
@@ -58,15 +90,33 @@ class OrganisationsListView extends GetView<OrganisationsListController> {
                         itemCount: controller.foundOrganisations.value.length,
                         itemBuilder: (context, index) => Container(
                           margin: const EdgeInsets.all(8.0),
-                          decoration: const BoxDecoration(
+                          decoration:  BoxDecoration(
                               color: Colors.white,
-                              borderRadius:  BorderRadius.only(
+                              borderRadius:  const BorderRadius.only(
                                 topLeft: Radius.circular(20.0),
                                 topRight: Radius.circular(20.0),
                                 bottomLeft: Radius.circular(20.0),
                                 bottomRight: Radius.circular(20.0),
-                              )
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  offset: const Offset(
+                                    5.0,
+                                    5.0,
+                                  ),
+                                  blurRadius: 10.0,
+                                  spreadRadius: 2.0,
+                                ),
+                                 BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  offset: const Offset(0.0, 0.0, ),
+                                  blurRadius: 10.0,
+                                  spreadRadius: 2.0,
+                                ),
+                              ],
                           ),
+
                           child: CustomCard(
                               data: controller.foundOrganisations.value[index],
                               function: () {

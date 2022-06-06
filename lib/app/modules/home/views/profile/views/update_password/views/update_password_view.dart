@@ -42,7 +42,7 @@ class UpdatePasswordView extends GetView<UpdatePasswordController> {
 
                   //Password
                   Obx(
-                        () => TextFormField(
+                    () => TextFormField(
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       decoration: InputDecoration(
                         suffixIcon: IconButton(

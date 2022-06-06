@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_app/app/services/siteService.dart';
 
@@ -9,7 +10,17 @@ class SitesController extends GetxController {
 
   late final dynamic service;
   late final dynamic organisation;
-
+  var filterValue = "closest".obs;
+  List<DropdownMenuItem<String>>? filterItems = const [
+      DropdownMenuItem(
+        value: "closest",
+        child: Text("Closest sites", style: TextStyle(color: Colors.white),),
+      ),
+      DropdownMenuItem(
+      value: "less",
+      child: Text("Less traffic", style: TextStyle(color: Colors.white),),
+    ),
+  ];
   @override
   void onInit() {
     service = Get.arguments['service'];

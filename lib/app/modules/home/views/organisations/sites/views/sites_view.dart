@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -47,18 +49,32 @@ class SitesView extends GetView<SitesController> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               //Organisation Cover
-              ClipRRect(
-                  child: Hero(
-                    tag: controller.organisation['id'].toString(),
-                    child: Image.asset(
-                      'assets/fake_logo.png',
-                      height: 300,
-                      fit: BoxFit.fill,
-                      alignment: Alignment.topCenter,
-                    ),
-                  )
+              SizedBox(
+                height: 250,
+                child: Hero(
+                  tag: controller.organisation['id'].toString(),
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.asset('assets/fake_logo.png', fit: BoxFit.cover),
+                      ClipRRect( // Clip it cleanly.
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                          child:  Image.asset(
+                            'assets/fake_logo.png',
+                            height: 300,
+                            fit: BoxFit.contain,
+                            alignment: Alignment.topCenter,
+                          ),
+
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               const SizedBox(height: 10),
+
 
               //Organisation Title
               ListTile(
@@ -70,16 +86,33 @@ class SitesView extends GetView<SitesController> {
                         color: Colors.grey[800]
                     )
                 ),
-
-                trailing: IconButton(
-                  icon: Icon(
-                    Icons.favorite,
-                    color: Colors.grey[400],
-                    size: 30,
-                  ),
-                  onPressed: () {},
-                ),
                 subtitle: Text("Choose a site to register in."),
+
+                trailing: Container(
+                  width: 140,
+                  height: 59,
+
+                  child: DropdownButtonFormField(
+                    dropdownColor: Colors.deepPurple,
+                    decoration: const InputDecoration(
+                      filled: true,
+                      fillColor: Colors.deepPurple,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8),
+                        ),
+                      ),
+                    ),
+                    icon: const Icon(Icons.keyboard_arrow_down, color: Colors.white,),
+                    isExpanded: true,
+                    value:  controller.filterValue.value,
+                    items:  controller.filterItems,
+                    onChanged: (value) {
+                      controller.filterValue.value = value.toString();
+                    },
+                  ),
+                ),
+
               ),
 
               //The services list

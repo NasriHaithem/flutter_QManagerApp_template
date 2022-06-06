@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -26,16 +28,29 @@ class ShareLocationView extends GetView<ShareLocationController> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               //Organisation Cover
-              ClipRRect(
-                  child: Hero(
-                    tag: controller.organisation['id'].toString(),
-                    child: Image.asset(
-                      'assets/fake_logo.png',
-                      height: 300,
-                      fit: BoxFit.fill,
-                      alignment: Alignment.topCenter,
-                    ),
-                  )
+              SizedBox(
+                height: 250,
+                child: Hero(
+                  tag: controller.organisation['id'].toString(),
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.asset('assets/fake_logo.png', fit: BoxFit.cover),
+                      ClipRRect( // Clip it cleanly.
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                          child:  Image.asset(
+                            'assets/fake_logo.png',
+                            height: 300,
+                            fit: BoxFit.contain,
+                            alignment: Alignment.topCenter,
+                          ),
+
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               const SizedBox(height: 10),
 
@@ -44,20 +59,23 @@ class ShareLocationView extends GetView<ShareLocationController> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                            OrganisationService.getOrganisationName(controller.organisation),
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Colors.grey[800]
-                            )
-                        ),
-                        const Text("Pick a service to register in."),
-                      ],
+                    SizedBox(
+                      width: 230,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                              OrganisationService.getOrganisationName(controller.organisation),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: Colors.grey[800]
+                              )
+                          ),
+                        ],
+                      ),
                     ),
                     TextButton(
                         style: ButtonStyle(
@@ -80,6 +98,7 @@ class ShareLocationView extends GetView<ShareLocationController> {
                                   "isLocationEnabled": true,
                                   "userPosition": position
                                 },
+                              transition: Transition.rightToLeft
                             );
                           }
                         },
@@ -92,6 +111,10 @@ class ShareLocationView extends GetView<ShareLocationController> {
                     ),
                   ]
                 ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text("Pick a service to register in."),
               ),
 
               //Governorate dropdown list
