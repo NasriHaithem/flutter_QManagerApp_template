@@ -75,7 +75,7 @@ class AppTranslations extends Translations{
       'logoutTileList': 'Logout',
 
       //Profil -> Change password
-            'updatePasswordTitle': "Update password",
+      'updatePasswordTitle': "Update password",
       'newPasswordInputLabel': "New password",
       'repeatedPasswordInputLabel': "Repeat password",
       'repeatPasswordErrorMsg': "Passwords should be identical",

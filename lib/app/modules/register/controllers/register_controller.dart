@@ -50,6 +50,8 @@ class RegisterController extends GetxController {
   //Random Confirmation Code
   var randomCode = "";
 
+  RxString dialCodeInitial = '+216'.obs;
+
   @override
   void onInit() {
     super.onInit();

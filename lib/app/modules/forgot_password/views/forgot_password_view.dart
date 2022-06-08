@@ -12,9 +12,16 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey.shade50,
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.deepPurple,
+        ),
+      ),
       body: SafeArea(
         child: Container(
-          margin: const EdgeInsets.only(top: 30, left: 16, right: 16),
+          margin: const EdgeInsets.only(top: 10, left: 16, right: 16),
           width: context.width,
           height: context.height,
           child: SingleChildScrollView(
@@ -60,7 +67,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                     ),
 
                     Obx(
-                          () => Row(
+                      () => Row(
                         children: [
                           Container(
                             margin: const EdgeInsets.fromLTRB(5, 0, 5, 0),

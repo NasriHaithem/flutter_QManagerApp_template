@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:mobile_app/app/widgets/dialogs/choose_language_dialog.dart';
 
 import 'package:mobile_app/app/utils/credentials_validator.dart';
@@ -226,23 +227,66 @@ class RegisterView extends GetView<RegisterController> {
                               ),
 
                               //Phone
-                              TextFormField(
-                                autovalidateMode: AutovalidateMode.onUserInteraction,
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  labelText: "phoneInputLabel".tr,
-                                  prefixIcon: const Icon(Icons.phone),
+                              Container(
+                                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.black38),
+
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color(0xffeeeeee),
+                                      blurRadius: 10,
+                                      offset: Offset(0, 4),
+                                    ),
+                                  ],
                                 ),
-                                keyboardType: TextInputType.phone,
-                                controller: controller.phoneController,
-                                onSaved: (value) {
-                                  controller.phone = value!;
-                                },
-                                validator: (value) {
-                                  return CredentialsValidator.validatePhone(value!);
-                                },
+                                child: Stack(
+                                  children: [
+                                    InternationalPhoneNumberInput(
+                                      onInputChanged: (PhoneNumber number) {
+                                        controller.phone = number.phoneNumber!;
+                                        print(controller.phone);
+                                      },
+                                      selectorConfig: const SelectorConfig(
+                                        selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                                      ),
+                                      validator: (value) {
+                                        return CredentialsValidator.validatePhone(controller.phone);
+                                      },
+                                      ignoreBlank: false,
+                                      autoValidateMode: AutovalidateMode.onUserInteraction,
+                                      selectorTextStyle: const TextStyle(color: Colors.black),
+                                      textFieldController: controller.phoneController,
+                                      formatInput: false,
+
+                                      keyboardType:
+                                      const TextInputType.numberWithOptions(signed: true, decimal: true),
+                                      cursorColor: Colors.black,
+                                      inputDecoration: InputDecoration(
+
+                                        contentPadding: const EdgeInsets.only(bottom: 15, left: 0),
+                                        border: InputBorder.none,
+                                        hintText: "phoneInputLabel".tr,
+                                      ),
+                                      onSaved: (PhoneNumber number) {
+                                        print('On Saved: $number');
+                                      },
+                                    ),
+                                    Positioned(
+                                      left: 90,
+                                      top: 8,
+                                      bottom: 8,
+                                      child: Container(
+                                        height: 40,
+                                        width: 1,
+                                        color: Colors.black.withOpacity(0.13),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                               const SizedBox(
                                 height: 8,
@@ -495,7 +539,7 @@ class RegisterView extends GetView<RegisterController> {
 
                               //Repeated Password
                               Obx(
-                                    () => TextFormField(
+                                () => TextFormField(
                                   autovalidateMode: AutovalidateMode.onUserInteraction,
                                   decoration: InputDecoration(
                                     suffixIcon: IconButton(

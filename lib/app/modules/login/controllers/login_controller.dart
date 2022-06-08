@@ -93,10 +93,10 @@ class LoginController extends GetxController {
   }
 
   void navigateToHome() {
-    Get.to(() => HomeView(), binding: HomeBinding());
+    Get.offAll(() => HomeView(), binding: HomeBinding());
   }
 
   void navigateToOnBoarding() {
-    Get.to(() => OnBoardingView(), binding: OnBoardingBinding());
+    Get.offAll(() => OnBoardingView(), binding: OnBoardingBinding());
   }
 }

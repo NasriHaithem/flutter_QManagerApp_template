@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
 
 class LocationUtils {
   static Future<Position?> determinePosition() async {
@@ -34,5 +36,12 @@ class LocationUtils {
     catch(e) {
       print(e);
     }
+  }
+
+  static TextDirection changeTextDirection() {
+    if(Get.locale == "ar") {
+      return TextDirection.rtl;
+    }
+    return TextDirection.ltr;
   }
 }

@@ -1,12 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:mobile_app/app/handlers/StorageHandler.dart';
+import 'package:mobile_app/app/models/AppUser.dart';
 
 class AccountCredentialsController extends GetxController {
-  //TODO: Implement AccountCredentialsController
 
-  final count = 0.obs;
+  RxBool isLoading = true.obs;
+
+  late AppUser? currentUser;
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
+    currentUser = await StorageHandler.getUserFromStorage();
+    isLoading.value = false;
   }
 
   @override
@@ -16,5 +22,4 @@ class AccountCredentialsController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }
