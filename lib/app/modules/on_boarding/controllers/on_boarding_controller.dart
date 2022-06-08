@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile_app/app/data/on_boarding_info.dart';
 import 'package:mobile_app/app/modules/home/bindings/home_binding.dart';
 import 'package:mobile_app/app/modules/home/views/home_view.dart';
-import 'package:mobile_app/app/modules/login/views/login_view.dart';
 
 class OnBoardingController extends GetxController {
   var selectedPageIndex = 0.obs;
@@ -36,6 +34,10 @@ class OnBoardingController extends GetxController {
         'pageThreeInfo'.tr
     ),
   ];
-
-
+}
+class OnBoardingInfo {
+  final imageAsset;
+  final title;
+  final description;
+  OnBoardingInfo(this.imageAsset, this.title, this.description);
 }

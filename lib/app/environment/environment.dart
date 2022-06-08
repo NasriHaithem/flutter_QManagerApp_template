@@ -9,6 +9,6 @@ class Environment{
     return'.env.development';
   }
   static String get apiUrl{
-    return dotenv.env['API_URL']??'API_URL not found!';
+    return dotenv.env['API_URL']!;
   }
 }

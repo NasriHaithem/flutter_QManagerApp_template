@@ -52,7 +52,10 @@ class LoginView extends GetView<LoginController> {
                   const SizedBox(
                     height: 10,
                   ),
-
+                  //Error message
+                  Obx(
+                      () => controller.displayErrorMsg()
+                  ),
                   //Email
                   TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,

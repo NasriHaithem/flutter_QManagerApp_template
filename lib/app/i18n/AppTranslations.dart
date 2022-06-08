@@ -32,7 +32,7 @@ class AppTranslations extends Translations{
       'registerBtn':            'Register',
       'updateLanguage':         "Language",
       'forgotPasswordTitle':    "Retrieve password",
-      'submit':                 'Submit',
+      'submit':                 'Send',
       'invalidEmailError':      "Provide valid Email",
       'invalidPhoneError':      "Provide valid Phone Number",
       'invalidPasswordError':   "Password must be of 6 characters",
@@ -40,6 +40,9 @@ class AppTranslations extends Translations{
       'confirmCodePageTitle':   "Enter confirmation code",
       'codeInputLabel':         "Code",
       'confirmBtn':             "Confirm",
+      'resetPasswordStepLabel': "Request",
+      'verifyCodeStepLabel':    "Verification",
+
 
       //CHOOSE LANGUAGE DIALOG
       'chooseLangDialogTitle':  "Choose Your Language",
@@ -55,7 +58,7 @@ class AppTranslations extends Translations{
       'next':                  'Next',
       'registerStepLabel':     "Register",
       'activateStepLabel':     "Activate",
-      'confirmStepLabel':      "Confirm",
+      'confirmStepLabel':      "Password",
       'createPasswordStepLabel':"Create password",
 
       //HOME PAGE
@@ -69,6 +72,8 @@ class AppTranslations extends Translations{
       'passwordTileList': 'Change password',
       'languageTileList': 'Language',
       'credentialsTileList': 'Account\'s credentials',
+      'logoutTileList': 'Logout',
+
       //Profil -> Change password
             'updatePasswordTitle': "Update password",
       'newPasswordInputLabel': "New password",
@@ -106,13 +111,15 @@ class AppTranslations extends Translations{
       'invalidPhoneError':       "أدخل رقم هاتف بشكل صحيح",
       'invalidPasswordError':    "كلمة المرور يجب أن تتكون من 6 أحرف على الأقل" ,
       'requiredInputError':      "توفير هذه البيانات مطلوب",
-      'confirmCodePageTitle':    "أدخل رمز التأكيد",
+      'confirmCodePageTitle':    "أدخل رمز التفعيل",
       'codeInputLabel':          "الرمز",
       'confirmBtn':              "التأكيد",
-      'registerStepLabel':       "تسجيل" ,
+      'registerStepLabel':       "التسجيل" ,
       'activateStepLabel':       "التفعيل",
-      'confirmStepLabel':        "التأكيد" ,
-      'createPasswordStepLabel':"أنشئ كلمة مرور",
+      'confirmStepLabel':        "كلمة المرور" ,
+      'createPasswordStepLabel': "أنشئ كلمة المرور",
+      'resetPasswordStepLabel':  "الطلب",
+      'verifyCodeStepLabel':     "الإثبات",
 
       //CHOOSE LANGUAGE DIALOG
       'chooseLangDialogTitle':  "اختر لغة",
@@ -138,6 +145,8 @@ class AppTranslations extends Translations{
       'passwordTileList': 'تغيير كلمة المرور',
       'languageTileList': 'تغيير اللغة',
       'credentialsTileList': 'بيانات الحساب',
+      'logoutTileList': 'تسجيل الخروج',
+
       //Profil -> Change password
       'updatePasswordTitle': "تحديث كلمة المرور",
       'newPasswordInputLabel': "كلمة المرور الجديدة",
@@ -177,8 +186,11 @@ class AppTranslations extends Translations{
       'confirmBtn':             "Confirmer",
       'registerStepLabel':      "Inscrire",
       'activateStepLabel':      "Activer",
-      'confirmStepLabel':       "Confirmer",
+      'confirmStepLabel':       "Mot de passe",
       'createPasswordStepLabel':"Créer un mot de passe",
+      'resetPasswordStepLabel': "Demande",
+      'verifyCodeStepLabel':    "Verification",
+
 
 
       //CHOOSE LANGUAGE DIALOG
@@ -205,6 +217,7 @@ class AppTranslations extends Translations{
       'passwordTileList': 'Modifier le mot de passe',
       'languageTileList': 'Langue',
       'credentialsTileList': 'Informations du compte',
+      'logoutTileList': 'Déconnexion',
 
       //Profil -> Change password
       'updatePasswordTitle': "Changer le mot de passe",

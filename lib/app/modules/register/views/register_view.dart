@@ -49,17 +49,14 @@ class RegisterView extends GetView<RegisterController> {
                         Text('registerStepLabel'.tr, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
                       ],
                     ),
-                    Obx(
-                        () => controller.stepCount.value == 0
-                            ? Expanded(
-                          child:  Container(
-                              margin: const EdgeInsets.only(left: 10.0, right: 20.0),
-                              child: const Divider(
-                                color: Colors.black,
-                                height: 36,
-                              )),
-                        )
-                            : Container(),
+                    Expanded(
+                      child: Container(
+                          margin: const EdgeInsets.only(left: 10.0, right: 20.0),
+                          child: const Divider(
+                            color: Colors.black,
+                            height: 36,
+                          )
+                      ),
                     ),
 
                     Obx(
@@ -71,7 +68,7 @@ class RegisterView extends GetView<RegisterController> {
                             height: 30,
                             decoration: BoxDecoration(
                                 color: controller.stepCount < 1
-                                    ? Colors.deepPurpleAccent.shade100
+                                    ? Colors.grey.shade400
                                     : Colors.deepPurpleAccent,
 
                                 borderRadius: BorderRadius.circular(50)
@@ -84,17 +81,14 @@ class RegisterView extends GetView<RegisterController> {
                         ],
                       ),
                     ),
-                    Obx(
-                          () => controller.stepCount.value == 1
-                          ? Expanded(
-                        child:  Container(
-                            margin: const EdgeInsets.only(left: 10.0, right: 20.0),
-                            child: const Divider(
-                              color: Colors.black,
-                              height: 36,
-                            )),
-                      )
-                          : Container(),
+                    Expanded(
+                      child:  Container(
+                          margin: const EdgeInsets.only(left: 10.0, right: 20.0),
+                          child: const Divider(
+                            color: Colors.black,
+                            height: 36,
+                          )
+                      ),
                     ),
 
                     Obx(
@@ -107,7 +101,7 @@ class RegisterView extends GetView<RegisterController> {
                             decoration: BoxDecoration(
                                 color: controller.stepCount.value == 2
                                     ? Colors.deepPurpleAccent
-                                    : Colors.deepPurpleAccent.shade100,
+                                    : Colors.grey.shade400,
 
                                 borderRadius: BorderRadius.circular(50)
                             ),
@@ -129,6 +123,7 @@ class RegisterView extends GetView<RegisterController> {
                     physics: const NeverScrollableScrollPhysics(),
                     controller: controller.pageController,
                     children: [
+
                       SingleChildScrollView(
                         child: Form(
                           key: controller.registerFormKey,
@@ -158,6 +153,10 @@ class RegisterView extends GetView<RegisterController> {
                               ),
                               const SizedBox(
                                 height: 10,
+                              ),
+                              //ERROR MESSAGE
+                              Obx(
+                                  () => controller.displayRegisterErrorMsg()
                               ),
                               //Email
                               TextFormField(
@@ -338,6 +337,10 @@ class RegisterView extends GetView<RegisterController> {
                               const SizedBox(
                                 height: 20,
                               ),
+                              //ERROR MESSAGE
+                              Obx(
+                                  () => controller.displayCodeErrorMsg()
+                              ),
                               //CODE
                               TextFormField(
                                 autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -418,7 +421,6 @@ class RegisterView extends GetView<RegisterController> {
                           ),
                         ),
                       ),
-
 
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),

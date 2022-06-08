@@ -2,10 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:mobile_app/app/handlers/StorageHandler.dart';
 import 'package:mobile_app/app/modules/home/views/profile/views/account_credentials/bindings/account_credentials_binding.dart';
 import 'package:mobile_app/app/modules/home/views/profile/views/account_credentials/views/account_credentials_view.dart';
 import 'package:mobile_app/app/modules/home/views/profile/views/update_password/bindings/update_password_binding.dart';
 import 'package:mobile_app/app/modules/home/views/profile/views/update_password/views/update_password_view.dart';
+import 'package:mobile_app/app/modules/login/bindings/login_binding.dart';
+import 'package:mobile_app/app/modules/login/views/login_view.dart';
 import 'package:mobile_app/app/widgets/dialogs/choose_language_dialog.dart';
 
 import '../controllers/profile_controller.dart';
@@ -55,7 +58,6 @@ class ProfileView extends GetView<ProfileController> {
                     trailing: const Icon(Icons.chevron_right),
                   ),
                 ),
-
                 //UPDATE LANGUAGE
                 Card(
                   child: ListTile(
@@ -68,7 +70,6 @@ class ProfileView extends GetView<ProfileController> {
                     trailing: const Icon(Icons.chevron_right),
                   ),
                 ),
-
                 //ACCOUNT CREDENTIALS
                 Card(
                   child: ListTile(
@@ -80,6 +81,21 @@ class ProfileView extends GetView<ProfileController> {
                       },
                     leading: Icon(Icons.security, color: Colors.green.shade900,),
                     title: Text('credentialsTileList'.tr),
+                    trailing: const Icon(Icons.chevron_right),
+                  ),
+                ),
+                //LOG-OUT
+                Card(
+                  child: ListTile(
+                    onTap: () async {
+                      await StorageHandler.resetStorage();
+                      Get.to(
+                              () => LoginView(),
+                          binding: LoginBinding()
+                      );
+                    },
+                    leading: Icon(Icons.logout, color: Colors.black,),
+                    title: Text('logoutTileList'.tr),
                     trailing: const Icon(Icons.chevron_right),
                   ),
                 ),

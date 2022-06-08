@@ -15,7 +15,7 @@ class AppUser {
     required this.mail,
     required this.password,
     required this.telephone,
-    required this.status,
+    this.status,
   });
 
   //PROPERTIES
@@ -24,7 +24,7 @@ class AppUser {
   String mail;
   String password;
   String telephone;
-  String status;
+  String? status;
 
   factory AppUser.fromJson(Map<String, dynamic> json) => AppUser(
     nom: json["nom"],

@@ -17,16 +17,16 @@ class FavoritesController extends GetxController {
             "organisation":
             {
               "id": 1,
-              "nomOrganisationFR": "nom 1",
-              "nomOrganisationAR": "اسم 1",
-              "nomOrganisationEN": "name 1 name 1 name 1 name 1",
+              "nomOrganisationFR": "nom d'un organisation",
+              "nomOrganisationAR": "اسم المنظمة",
+              "nomOrganisationEN": "Organisation name",
             },
             "service":
             {
               "id": 1,
-              "nomServiceFR": "Le service 1",
-              "nomServiceAR": "خدمة 1",
-              "nomServiceEN": "The service 1",
+              "nomServiceFR": "Copie conforme",
+              "nomServiceAR": "نسخة طبق الأصل",
+              "nomServiceEN": "Identical copy",
               "descriptionFR": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tristique vitae velit vitae convallis. Donec cursus leo et ipsum sollicitudin, sit amet facilisis eros imperdiet. Pellentesque pellentesque consequat nulla et rutrum. Nulla lobortis mollis nunc sit amet iaculis. Morbi nec eros volutpat, ornare ante nec, tempor lacus. Nam cursus dictum orci,",
               "descriptionEN": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tristique vitae velit vitae convallis. Donec cursus leo et ipsum sollicitudin, sit amet facilisis eros imperdiet. Pellentesque pellentesque consequat nulla et rutrum. Nulla lobortis mollis nunc sit amet iaculis. Morbi nec eros volutpat, ornare ante nec, tempor lacus. Nam cursus dictum orci,",
               "descriptionAR": "هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها.",

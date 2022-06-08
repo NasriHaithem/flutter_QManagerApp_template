@@ -24,10 +24,8 @@ class AccountCredentialsView extends GetView<AccountCredentialsController> {
       ),
       body:  Padding(
         padding:  const EdgeInsets.all(20.0),
-
         child:  Column(
-
-          children:   <Widget>[
+          children:  <Widget>[
             Card(
               child: ListTile(
                   horizontalTitleGap: 50,
@@ -45,7 +43,7 @@ class AccountCredentialsView extends GetView<AccountCredentialsController> {
                   ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
 
             Card(
               child: ListTile(
@@ -64,7 +62,7 @@ class AccountCredentialsView extends GetView<AccountCredentialsController> {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
 
             Card(
               child: ListTile(
@@ -83,7 +81,7 @@ class AccountCredentialsView extends GetView<AccountCredentialsController> {
                 ),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
 
             Card(
               child: ListTile(
@@ -102,6 +100,29 @@ class AccountCredentialsView extends GetView<AccountCredentialsController> {
                 ),
               ),
             ),
+            const SizedBox(height: 15),
+
+            Center(
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  backgroundColor: MaterialStateProperty.all(Colors.amber.shade700),
+                  padding: MaterialStateProperty.all(const EdgeInsets.all(14)),
+                  fixedSize: MaterialStateProperty.all(const Size(160, 47) ),
+                ),
+                child: Text(
+                  "update".tr,
+                  style: const TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+                onPressed: () {
+                  //controller.checkPassword();
+                },
+              ),
+            )
           ]
         ),
       ),

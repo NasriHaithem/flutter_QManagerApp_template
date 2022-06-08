@@ -8,6 +8,7 @@ class CredentialsValidator {
     }
     return null;
   }
+
   static String? validateEmail(String value) {
     if (!GetUtils.isEmail(value)) {
       return "invalidEmailError".tr;
