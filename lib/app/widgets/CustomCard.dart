@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -6,11 +8,13 @@ import 'package:mobile_app/app/services/organisationService.dart';
 
 class CustomCard extends StatelessWidget {
 
-  final dynamic data;
+  final String data;
+  final Uint8List image;
   final Function() function;
 
   const CustomCard({
     required this.data,
+    required this.image,
     required this.function,
   });
 
@@ -23,16 +27,17 @@ class CustomCard extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: Hero(
-                  tag: data['id'].toString(),
+                  //we joined the code units of the data to get a unique id out of the data.
+                  tag: double.parse(data.codeUnits.join()),
                   child: Container(
-                    decoration: const BoxDecoration(
-                       borderRadius:  BorderRadius.only(
+                    decoration: BoxDecoration(
+                       borderRadius:  const BorderRadius.only(
                           topLeft: Radius.circular(20.0),
                           topRight: Radius.circular(20.0),
                       ),
                       image: DecorationImage(
-                          image: AssetImage("assets/fake_logo.png"),
-                          fit: BoxFit.cover,
+                          image: MemoryImage(image),
+                          fit: BoxFit.contain,
                       ),
                     ),
                   ),
@@ -46,13 +51,8 @@ class CustomCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      OrganisationService.getOrganisationName(data),
+                      data,
                       style: TextStyle(fontSize: 18),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      'Unsplash',
-                      style: Theme.of(context).textTheme.caption,
                     ),
                   ],
                 ),

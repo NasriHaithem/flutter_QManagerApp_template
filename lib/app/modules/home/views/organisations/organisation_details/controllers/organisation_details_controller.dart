@@ -1,5 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:mobile_app/app/models/Organisation.dart';
+import 'package:mobile_app/app/models/Service.dart';
+import 'package:mobile_app/app/models/Service.dart';
+import 'package:mobile_app/app/models/Service.dart';
+import 'package:mobile_app/app/models/Service.dart';
 import 'package:mobile_app/app/modules/home/views/organisations/share_location/bindings/share_location_binding.dart';
 import 'package:mobile_app/app/modules/home/views/organisations/share_location/views/share_location_view.dart';
 import 'package:mobile_app/app/modules/home/views/organisations/sites/bindings/sites_binding.dart';
@@ -9,27 +17,40 @@ import 'package:mobile_app/global_state_management.dart';
 
 class OrganisationDetailsController extends GetxController {
   final pageController = PageController(initialPage: 0);
-  late final List<Map<String, dynamic>> allServices;
-  Rx<List<Map<String, dynamic>>> foundServices = Rx<List<Map<String, dynamic>>>([]);
+  late final List<Service> allServices;
+  Rx<List<Service>> foundServices = Rx<List<Service>>([]);
   final searchInput = TextEditingController();
 
-  late final dynamic organisation;
+  late final Organisation organisation;
 
   @override
-  void onInit() {
+  void onInit() async{
     organisation = Get.arguments;
-    allServices = ServiceService.servicesList;
+    allServices = await getServicesByOrganisationName(organisation.name);
+    print("services: ${allServices[1].toJson()}" );
     foundServices.value = allServices;
     super.onInit();
   }
 
+  Future<List<Service>> getServicesByOrganisationName(String orgName) async{
+    var response = await ServiceService.getServicesByOrganisationName(organisation.name);
+    final List<dynamic> responseJson = jsonDecode(response.body);
+
+    return responseJson
+        .map((c) => Service.fromJson(c))
+        .toList();
+  }
+
+
+
+
   void filterServices(String nomService) {
-    List<Map<String, dynamic>> results = [];
+    List<Service> results = [];
     if (nomService.isEmpty) {
       results = allServices;
     } else {
       results = allServices
-          .where((element) => ServiceService.getServiceName(element)
+          .where((s) => s.name
           .toString()
           .toLowerCase()
           .contains(nomService.toLowerCase()))
@@ -39,7 +60,7 @@ class OrganisationDetailsController extends GetxController {
   }
 
   void navigateToNextPage(service) {
-    final position = GlobalState.globalState.userPosition;
+    final Rx<Position>? position = GlobalState.globalState.userPosition;
     if( position == null) {
       Get.to(
           () => ShareLocationView(),
@@ -59,7 +80,8 @@ class OrganisationDetailsController extends GetxController {
             "organisation": organisation,
             "service": service,
             "isLocationEnabled": true,
-            "position": position
+            "latitude": position.value.latitude,
+            "longitude": position.value.longitude
           },
           transition: Transition.rightToLeft
       );

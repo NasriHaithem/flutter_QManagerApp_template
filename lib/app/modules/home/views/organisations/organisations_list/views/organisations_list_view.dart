@@ -25,11 +25,7 @@ class OrganisationsListView extends GetView<OrganisationsListController> {
               ),
 
               //Search Field
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    width: 270,
+              Container(
                     height: 50,
                     padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
                     decoration: const BoxDecoration(
@@ -50,32 +46,6 @@ class OrganisationsListView extends GetView<OrganisationsListController> {
                       ),
                     ),
                   ),
-                  Container(
-                    height: 50,
-
-                    padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
-                    decoration: const BoxDecoration(
-                        color: Colors.deepPurple,
-                        borderRadius:  BorderRadius.only(
-                          topLeft: Radius.circular(7.0),
-                          topRight: Radius.circular(7.0),
-                          bottomRight: Radius.circular(7.0),
-                          bottomLeft: Radius.circular(7.0),
-                        )
-                    ),
-
-                    child: Row(
-                      children: [
-                        Text("Filter", style: TextStyle(color: Colors.white, fontSize: 16),),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.filter_list, color: Colors.white, size: 30,),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
               const SizedBox(
                 height: 10,
               ),
@@ -118,7 +88,8 @@ class OrganisationsListView extends GetView<OrganisationsListController> {
                           ),
 
                           child: CustomCard(
-                              data: controller.foundOrganisations.value[index],
+                              data: controller.foundOrganisations.value[index].name,
+                              image: controller.foundOrganisations.value[index].logo,
                               function: () {
                                 Get.to(
                                     () => OrganisationDetailsView(),

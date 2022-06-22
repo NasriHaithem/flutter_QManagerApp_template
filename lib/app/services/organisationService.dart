@@ -1,47 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import'package:http/http.dart'as http;
+import 'package:mobile_app/app/dto/OrganisationRequest.dart';
+import 'package:mobile_app/app/handlers/ApiHandler.dart';
+import 'package:mobile_app/app/handlers/StorageHandler.dart';
 
 class OrganisationService {
-  static const organisationList = [
-    {
-      "id": 1,
-      "nomOrganisationFR": "nom 1",
-      "nomOrganisationAR": "اسم 1",
-      "nomOrganisationEN": "name 1 name 1 name 1 name 1",
-    },
-    {
-      "id": 2,
-      "nomOrganisationFR": "nom 2",
-      "nomOrganisationAR": "اسم 2",
-      "nomOrganisationEN": "name 2",
-    },
-    {
-      "id": 3,
-      "nomOrganisationFR": "nom 3",
-      "nomOrganisationAR": "اسم 3",
-      "nomOrganisationEN": "name 3",
-    },
-    {
-      "id": 4,
-      "nomOrganisationFR": "nom 4",
-      "nomOrganisationAR": "اسم 4",
-      "nomOrganisationEN": "name 4",
-    },
-    {
-      "id": 5,
-      "nomOrganisationFR": "nom 5",
-      "nomOrganisationAR": "اسم 5",
-      "nomOrganisationEN": "name 5",
-    },
-  ];
+  static const String qmanagerBaseEndpoint = "/qmanager";
 
-  static String getOrganisationName(organisation) {
-    Locale locale = Get.locale ?? const Locale("en");
-    switch(locale.toString()) {
-      case "ar": return organisation["nomOrganisationAR"];
-      case "fr": return organisation["nomOrganisationFR"];
-      default: return organisation["nomOrganisationEN"];
-    }
+  static Future<http.Response> getOrganisationsByCategoryCode(String code) async{
+    String? token = await StorageHandler.getToken();
+    token = token ?? "";
+    return await NetworkHandler.get("$qmanagerBaseEndpoint/categories/$code/allOrganisations", token);
   }
 
+  static Future<http.Response> getGovernoratesByOrganisation(String orgName) async {
+    String? token = await StorageHandler.getToken();
+    token = token ?? "";
+    return await NetworkHandler.post(
+        orgRequestToJson(OrganisationRequest(name: orgName)),
+        "$qmanagerBaseEndpoint/getGouvernoratsByOrganisation",
+        token);
+  }
 }

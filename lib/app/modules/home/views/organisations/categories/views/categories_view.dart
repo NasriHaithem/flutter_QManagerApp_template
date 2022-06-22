@@ -48,13 +48,13 @@ class CategoriesView extends GetView<CategoriesController> {
                           controller.updateCategoriesList(controller.foundCategories.value[index]);
                         },
                         title: Text(
-                          controller.getCategoryName(controller.foundCategories.value[index]),
+                          controller.foundCategories.value[index].name,
                           style:
-                          const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          const TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),
                         ),
                         trailing: const Icon(Icons.chevron_right),
 
-                   ),
+                      ),
                     ),
                 ),
               ),

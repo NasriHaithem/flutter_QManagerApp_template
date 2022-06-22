@@ -10,18 +10,34 @@ class NetworkHandler {
       return Uri.parse(apiPath);
     }
 
-    static Future<http.Response> post(var body,String endpoint)async{
+    static Future<http.Response> post(var body, String endpoint, [String token = ""])async{
+      var headers =  token.isNotEmpty
+                                ? {
+                                  "Content-type":"application/json",
+                                  'Authorization': 'Bearer $token',
+                                }
+                                : {
+                                    "Content-type":"application/json",
+                                  };
       return await client.post(
               buildUrl(endpoint),
               body:body,
-              headers: {"Content-type":"application/json"}
+              headers: headers
           );
     }
 
-    static Future<http.Response> get(String endpoint)async{
+    static Future<http.Response> get(String endpoint, [String token = ""])async{
+      var headers =  token.isNotEmpty
+                                  ? {
+                                      "Content-type":"application/json",
+                                      'Authorization': 'Bearer $token',
+                                    }
+                                  : {
+                                      "Content-type":"application/json",
+                                    };
       return await client.get(
           buildUrl(endpoint),
-          headers: {"Content-type":"application/json"}
+          headers: headers
       );
     }
 }

@@ -14,8 +14,6 @@ import '../controllers/organisation_details_controller.dart';
 
 class OrganisationDetailsView extends GetView<OrganisationDetailsController> {
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,21 +56,20 @@ class OrganisationDetailsView extends GetView<OrganisationDetailsController> {
               SizedBox(
                 height: 250,
                 child: Hero(
-                  tag: controller.organisation['id'].toString(),
+                  tag: double.parse(controller.organisation.name.codeUnits.join()),
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
-                      Image.asset('assets/fake_logo.png', fit: BoxFit.cover),
-                      ClipRRect( // Clip it cleanly.
+                      Image.memory(controller.organisation.logo, fit: BoxFit.cover),
+                      ClipRRect(
                         child: BackdropFilter(
                           filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                          child:  Image.asset(
-                              'assets/fake_logo.png',
+                          child:  Image.memory(
+                              controller.organisation.logo,
                               height: 300,
                               fit: BoxFit.contain,
                               alignment: Alignment.topCenter,
                             ),
-
                         ),
                       ),
                     ],
@@ -85,7 +82,7 @@ class OrganisationDetailsView extends GetView<OrganisationDetailsController> {
               //Organisation Title
               ListTile(
                   title: Text(
-                      OrganisationService.getOrganisationName(controller.organisation),
+                      controller.organisation.name,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -115,7 +112,7 @@ class OrganisationDetailsView extends GetView<OrganisationDetailsController> {
                             controller.navigateToNextPage(controller.foundServices.value[index]);
                           },
                           title: Text(
-                            ServiceService.getServiceName(controller.foundServices.value[index]),
+                            controller.foundServices.value[index].name,
                             style:
                             const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                           ),

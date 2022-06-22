@@ -1,70 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import'package:http/http.dart'as http;
+import 'package:mobile_app/app/handlers/ApiHandler.dart';
+import 'package:mobile_app/app/handlers/StorageHandler.dart';
+import 'package:mobile_app/app/models/Service.dart';
 
 class SiteService {
-  static const sitesList = [
-    {
-      "id": 1,
+  static const String qmanagerBaseEndpoint = "/qmanager";
 
-      "nomSiteFR": " nom site 1",
-      "nomSiteAR": "اسم الموقع 1",
-      "nomSiteEN": "site name 1",
-
-      "adresseFR": "état, ville, rue",
-      "adresseAR": "ولاية ، مدينة ، شارع",
-      "adresseEN": "state, City, street",
-
-      "delegationFR": "delegation 1",
-      "delegationAR": "معتمدية 1",
-      "delegationEN": "delegation 1",
-    },
-    {
-      "id": 2,
-
-      "nomSiteFR": " nom site 2",
-      "nomSiteAR": "اسم الموقع 2",
-      "nomSiteEN": "site name 2",
-
-      "adresseFR": "état, ville, rue",
-      "adresseAR": "ولاية ، مدينة ، شارع",
-      "adresseEN": "state, City, street",
-
-      "delegationFR": "delegation 2",
-      "delegationAR": "معتمدية 2",
-      "delegationEN": "delegation 2",
-    },
-    {
-      "id": 3,
-
-      "nomSiteFR": " nom site 3",
-      "nomSiteAR": "اسم الموقع 3",
-      "nomSiteEN": "site name 3",
-
-      "adresseFR": "état, ville, rue",
-      "adresseAR": "ولاية ، مدينة ، شارع",
-      "adresseEN": "state, City, street",
-
-      "delegationFR": "delegation 3",
-      "delegationAR": "معتمدية 3",
-      "delegationEN": "delegation 3",
-    }
-  ];
-
-  static String getSiteName(site) {
-    Locale locale = Get.locale ?? const Locale("en");
-    switch(locale.toString()) {
-      case "ar": return site["nomSiteAR"];
-      case "fr": return site["nomSiteFR"];
-      default: return site["nomSiteEN"];
-    }
+  static Future<http.Response> getSitesByOrgAndServiceAndAddress(String orgName, int serviceId, String gov, String delegation) async{
+    String? token = await StorageHandler.getToken();
+    token = token ?? "";
+    return await NetworkHandler
+        .get(
+            "$qmanagerBaseEndpoint/getSitesByTypeAndServiceAndGouvernoratAndDelegation/$orgName/$serviceId/$gov/$delegation",
+            token
+        );
   }
 
-  static String getSiteAddress(service) {
-    Locale locale = Get.locale ?? const Locale("en");
-    switch(locale.toString()) {
-      case "ar": return service["adresseAR"];
-      case "fr": return service["adresseFR"];
-      default: return service["adresseEN"];
-    }
+  static Future<http.Response> getSitesByOrgAndServiceAndGpsCoordinates(String orgName, int serviceId, double latitude, double longitude) async{
+    String? token = await StorageHandler.getToken();
+    token = token ?? "";
+    return await NetworkHandler
+        .get(
+        "$qmanagerBaseEndpoint/organisation/$orgName/service/$serviceId/sites/location/$latitude/$longitude",
+        token
+    );
   }
+
+
+
 }

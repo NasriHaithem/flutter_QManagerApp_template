@@ -1,34 +1,63 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile_app/app/models/Governorate.dart';
+import 'package:mobile_app/app/models/Organisation.dart';
+import 'package:mobile_app/app/models/Service.dart';
+import 'package:mobile_app/app/services/organisationService.dart';
 
 class ShareLocationController extends GetxController {
-  //TODO: Implement ShareLocationController
 
-  late final dynamic organisation;
-  late final dynamic pickedService;
+  late final Organisation organisation;
+  late final Service pickedService;
+  late final List<Governorate> governorates;
   var selectedGovernorate = "".obs;
+  var selectedDelegation = "".obs;
+  RxBool isLoading = true.obs ;
   @override
-  void onInit() {
+  void onInit() async{
     organisation = Get.arguments['organisation'];
     pickedService = Get.arguments['service'];
-    print("organisation: $organisation");
-    print("pickedService: $pickedService");
+
+    governorates = await getGovernoratesByOrganisation(organisation.name);
+    isLoading.value = false;
     super.onInit();
   }
 
+  Future<List<Governorate>> getGovernoratesByOrganisation(String orgName) async{
+    var response = await OrganisationService.getGovernoratesByOrganisation(orgName);
+    final List<dynamic> responseJson = jsonDecode(response.body);
+
+    return responseJson
+        .map((c) => Governorate.fromJson(c))
+        .toList();
+  }
+
   List<DropdownMenuItem<String>> get governorateItems{
-    List<DropdownMenuItem<String>> menuItems = [
-      const DropdownMenuItem(value: "", child: Text("Select Item Type"), enabled: false,),
-      const DropdownMenuItem(value: "USA", child: Text("USA")),
-      const DropdownMenuItem(value: "Canada", child: Text("Canada")),
-      const DropdownMenuItem(value: "Brazil", child: Text("Brazil")),
-      const DropdownMenuItem(value: "England", child: Text("England")),
-    ];
+    List<DropdownMenuItem<String>> menuItems = governorates.map( (gov) {
+        return DropdownMenuItem(value: gov.name, child: Text(gov.name));
+      }).toList();
+
+    menuItems.insert(0, const DropdownMenuItem(value: "", child: Text("Select a governorate"), enabled: false,));
     return menuItems;
   }
 
+  List<DropdownMenuItem<String>> get delegationItems{
+    if(selectedGovernorate.isEmpty) {
+      return [const DropdownMenuItem(value: "", child: Text("Select a delegation"))];
 
+    }
+    final Governorate pickedGovernorate = governorates.where((gov) => gov.name == selectedGovernorate.value).first;
+    List<DropdownMenuItem<String>> menuItems = pickedGovernorate.delegations
+        .map( (deleg) {
+          return DropdownMenuItem(value: deleg.name, child: Text(deleg.name));
+        }
+        ).toList();
 
+    menuItems.insert(0, const DropdownMenuItem(value: "", child: Text("Select a delegation"), enabled: false,));
+    return menuItems;
+  }
 
   @override
   void onReady() {

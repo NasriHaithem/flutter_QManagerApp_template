@@ -1,26 +1,26 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:mobile_app/app/services/organisationService.dart';
+import 'package:mobile_app/app/models/Organisation.dart';
 
 class OrganisationsListController extends GetxController {
 
-  late final List<Map<String, dynamic>> allOrganisations;
-  Rx<List<Map<String, dynamic>>> foundOrganisations = Rx<List<Map<String, dynamic>>>([]);
+  late final List<Organisation> allOrganisations;
+  Rx<List<Organisation>> foundOrganisations = Rx<List<Organisation>>([]);
 
 
   @override
   void onInit() {
     super.onInit();
-    allOrganisations = OrganisationService.organisationList;
+    allOrganisations = Get.arguments;
+    print(allOrganisations[0].logo);
     foundOrganisations.value = allOrganisations;
   }
   void filterOrganisations(String nomOrganisation) {
-    List<Map<String, dynamic>> results = [];
+    List<Organisation> results = [];
     if (nomOrganisation.isEmpty) {
       results = allOrganisations;
     } else {
       results = allOrganisations
-          .where((element) => OrganisationService.getOrganisationName(element)
+          .where((org) => org.name
           .toString()
           .toLowerCase()
           .contains(nomOrganisation.toLowerCase()))
